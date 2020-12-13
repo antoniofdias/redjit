@@ -1,0 +1,43 @@
+{% extends 'home/base.html' %}
+
+{% block content %}
+  <div class="post-container">
+    <h1 class="title">{{ post.title }}</h1>
+    <small>Postado por {{ post.username }} em {{ post.date_added }}</small>
+    <p class="text-content">
+      {{ post.content }}
+    </p>
+
+    <hr>
+    <h2 class="subtitle">Comentários:</h2>
+    {% for comment in post.comments.all %}
+      <div class="comment">
+        <p>
+          <strong>{{ comment.username }}</strong> <small>em {{ comment.date_added }}</small>
+          <br>
+          <p class="text-content">
+            {{ comment.body }}
+          </p>
+        </p>
+      </div>
+    {% empty %}
+      <h3 class="subtitle">Nenhum comentário 😔 Seja o primeiro! </h2>
+    {% endfor %}
+
+    <hr>
+
+    <h2 class="subtitle">Add comment</h2>
+
+    <form method="post" action="." class="comment-form">
+      {% csrf_token%}
+
+      {{ form.as_p }}
+
+      <div class="field">
+        <div class="control">
+          <button class="button-is-success">Submit</button>
+        </div>
+      </div>
+    </form>
+  </div>
+{% endblock %}
