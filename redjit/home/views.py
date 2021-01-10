@@ -94,9 +94,8 @@ def post_detail(request, slug):
 
   return render(request, 'home/post_detail.html', context)
 
-# Crie a view "new_post", que renderiza o template'home/create_post.html',
-# que só pode ser acessada caso o usuário esteja logado e
-# recebe um formulário de post em seu contexto.
-
+@login_required(login_url='auth_login')
 def new_post(request):
-  return
+  form = PostForm()
+
+  return render(request, 'home/create_post.html', { "form": form })

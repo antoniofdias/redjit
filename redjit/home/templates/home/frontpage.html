@@ -1,6 +1,18 @@
 {% extends 'home/base.html' %}
 
 {% block content %}
-  <!-- Caso a lista de posts não seja vazia, exiba-os em tela;
-  Caso contrário, mostre a mensagem: "Nenhum post cadastrado 😔 Faça o primeiro!" -->
+  {% if posts %}
+      {% for post in posts %}
+        <div class="card">
+          <a href="{% url 'post_detail' post.slug %}" class="post-block">
+            <h2 class="subtitle">{{ post.title }}</h2>
+            <small>Posted at {{ post.date_added }}</small>
+          </a>
+        </div>
+      {% endfor %}
+  {% else %}
+    <div class="no-posts">
+      <h1 class="no-posts-text">Nenhum post cadastrado 😔 Faça o primeiro!</h1>
+    </div>
+  {% endif %}
 {% endblock %}
