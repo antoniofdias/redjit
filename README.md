@@ -1,5 +1,5 @@
 <h1 align="center">
-    <img alt="redjit" title="Graphic design is my passion" src=".github/logo.png" width="250px" />
+    <img alt="redjit" title="Graphic design is my passion" src="redjit/.github/logo.png" width="250px" />
 </h1>
 
 <p align="center">
